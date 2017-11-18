@@ -35,6 +35,10 @@ parserTest = do
   it "#18" $ checkWithEval parse "(3 + 2) + 1" $ ILit 6
   it "#19" $ checkWithEval parse "3 + 42 < 43" $ BLit False
   it "#20" $ checkWithEval parse "42 + 2 < 49 && T" $ BLit True
+  it "Bonus #21" $ checkWithEval parse "(((1 + 2) + (1 + 2 + (2))) < 49) && F" $ BLit False
+  it "Bonus #22" $ checkWithEval parse "((1 + 2) + (1 + 2 + (2))) < 49 && F" $ BLit False
+  it "Bonus #23" $ checkWithEval parse "1 < 49 && F" $ BLit False
+  it "Bonus #24" $ checkWithEval parse "(1 + 2) + (1 + 2 + (2)) < 49 && F" $ BLit False
 
 
 check :: (Eq a, Show a) => Parser a -> Text -> a -> Expectation
